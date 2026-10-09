@@ -322,6 +322,20 @@ fun LoginScreen(onBackClick: () -> Unit) {
                     contentColor = darkText
                 )
             ) {
+                val icon = when (provider) {
+                    "Apple" -> R.drawable.apple_logo
+                    "Google" -> R.drawable.google_logo
+                    else -> R.drawable.facebook_logo
+                }
+
+                Image(
+                    painter = painterResource(icon),
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp)
+                )
+
+                Spacer(modifier = Modifier.width(12.dp))
+
                 Text("Continue with $provider")
             }
         }
