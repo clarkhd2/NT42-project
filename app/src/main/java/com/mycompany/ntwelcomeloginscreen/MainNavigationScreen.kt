@@ -53,24 +53,28 @@ fun MainNavigationScreen(onExit: () -> Unit) {
     ) { padding ->
         // Authentication and feature data are not connected in this preview.
         key(selected) {
-            Column(
-                modifier = Modifier.fillMaxSize().padding(padding)
-                    .verticalScroll(rememberScrollState()).padding(24.dp),
-                verticalArrangement = Arrangement.spacedBy(20.dp)
-            ) {
-                TextButton(onClick = onExit) { Text("Exit preview", color = navigationSelected) }
-                Text(selected.label, fontSize = 28.sp, fontWeight = FontWeight.Bold, color = pageText)
-                Text("App preview", color = navigationSelected, fontWeight = FontWeight.SemiBold)
-                Text(
-                    text = when (selected) {
-                        AppTab.Profile -> "Your profile will appear here once accounts are connected."
-                        AppTab.Reminders -> "Your reminders will appear here once this feature is connected."
-                        AppTab.Chat -> "Chat will be available here once messaging is connected."
-                        AppTab.Tips -> "Tips will appear here once content is added."
-                        AppTab.Trivia -> "Trivia will be available here once questions are added."
-                    },
-                    color = pageText
-                )
+            if (selected == AppTab.Profile) {
+                ProfileScreen(modifier = Modifier.padding(padding))
+            } else {
+                Column(
+                    modifier = Modifier.fillMaxSize().padding(padding)
+                        .verticalScroll(rememberScrollState()).padding(24.dp),
+                    verticalArrangement = Arrangement.spacedBy(20.dp)
+                ) {
+                    TextButton(onClick = onExit) { Text("Exit preview", color = navigationSelected) }
+                    Text(selected.label, fontSize = 28.sp, fontWeight = FontWeight.Bold, color = pageText)
+                    Text("App preview", color = navigationSelected, fontWeight = FontWeight.SemiBold)
+                    Text(
+                        text = when (selected) {
+                            AppTab.Profile -> "" // Profile is rendered above.
+                            AppTab.Reminders -> "Your reminders will appear here once this feature is connected."
+                            AppTab.Chat -> "Chat will be available here once messaging is connected."
+                            AppTab.Tips -> "Tips will appear here once content is added."
+                            AppTab.Trivia -> "Trivia will be available here once questions are added."
+                        },
+                        color = pageText
+                    )
+                }
             }
         }
     }

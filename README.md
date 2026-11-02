@@ -4,8 +4,9 @@ Personal project for NT42 prenatal care app
 ## Navigation preview
 
 Run the app and tap **Preview app** on the welcome screen. The bottom bar
-contains Profile, Reminders, Chat, Tips, and Trivia. Each tab opens a placeholder
-screen; authentication and feature data are not connected. The selected tab uses
+contains Profile, Reminders, Chat, Tips, and Trivia. Profile displays a sample participant card and the study menu from the approved
+design. Other tabs open placeholder screens; authentication and feature data are
+not connected. The selected tab uses
 the darker burgundy background from the navigation reference.
 
 Back returns to Profile from another tab, then exits the preview. **Exit preview**
