@@ -71,12 +71,15 @@ fun WelcomeLoginApp() {
             when (screen) {
                 "welcome" -> WelcomeScreen(
                     onLoginClick = { screen = "login" },
-                    onRegisterClick = { screen = "register" }
+                    onRegisterClick = { screen = "register" },
+                    onPreviewClick = { screen = "demo" }
                 )
 
                 "login" -> LoginScreen(
                     onBackClick = { screen = "welcome" }
                 )
+
+                "demo" -> MainNavigationScreen(onExit = { screen = "welcome" })
 
                 "register" -> RegisterPlaceholder(
                     onBackClick = { screen = "welcome" }
@@ -89,7 +92,8 @@ fun WelcomeLoginApp() {
 @Composable
 fun WelcomeScreen(
     onLoginClick: () -> Unit,
-    onRegisterClick: () -> Unit
+    onRegisterClick: () -> Unit,
+    onPreviewClick: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -134,7 +138,14 @@ fun WelcomeScreen(
             )
         }
 
-        Spacer(modifier = Modifier.height(64.dp))
+        TextButton(
+            onClick = onPreviewClick,
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        ) {
+            Text("Preview app", color = burgundy)
+        }
+
+        Spacer(modifier = Modifier.height(32.dp))
     }
 }
 
